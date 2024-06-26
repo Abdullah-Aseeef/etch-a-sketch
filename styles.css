@@ -53,3 +53,12 @@ p.pixelsize2{
     opacity: 1 !important;
     /* background-color: black; */
 }
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+button{
+    width: 20%;
+    aspect-ratio: 16/9;
+}

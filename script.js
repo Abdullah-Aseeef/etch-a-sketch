@@ -65,6 +65,9 @@ function popup(){
     body.insertBefore(new_container,body.firstChild);
 
     let pixel_size=window.prompt("Enter the Pixel Size");
+    while(pixel_size>100){
+        pixel_size=window.prompt("Enter a lower Pixel Size");
+    }
     SQUARES_DIM = pixel_size;
     createGrid();    
     if(SQUARES_DIM==16) drawPanda();
