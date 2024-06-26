@@ -24,20 +24,20 @@ for(let i =0; i < 16;i++){
 let SQUARES_DIM = 16;
 function createGrid(funky = false){
     let container = document.querySelector(".container");
+    let rand1=Math.floor(Math.random()*255);
+    let rand2=Math.floor(Math.random()*255);
+    let rand3=Math.floor(Math.random()*255);
     for(let i =0; i <SQUARES_DIM**2;i++){
         console.log(container.clientWidth);
         let div = document.createElement("div");
-        div.style.cssText=`width:${(container.clientWidth)/(SQUARES_DIM)-0.1}px;height:${(container.clientWidth)/(SQUARES_DIM)}px;`;
+        let color = funky? `rgb(${(rand1+i)%256},${(rand2+i)%256},${(rand3+i)%256})`:"black";
+        div.style.cssText=`background-color:${color};width:${(container.clientWidth)/(SQUARES_DIM)-0.1}px;height:${(container.clientWidth)/(SQUARES_DIM)}px;`;
         div.classList.add("box");
         div.id = `box${i}`;
         container.appendChild(div);
     }
     container.addEventListener('mouseover',(event)=>{
         let box = document.getElementById(event.target.id);
-        let rand1=Math.floor(Math.random()*255);
-        let rand2=Math.floor(Math.random()*255);
-        let rand3=Math.floor(Math.random()*255);
-        box.style.backgroundColor= funky? `rgb(${rand1},${rand2},${rand3})`:"black";
         box.classList.toggle("cursor");
         
     });
@@ -48,12 +48,14 @@ function createGrid(funky = false){
     });
 }
 createGrid()
-let panda = panda_pixelated.flat();
-panda.forEach((pixel)=>{
-    let box =document.querySelector(`#box${pixel}`);
-    box.classList.add("cursor");
-
-})
+function drawPanda(){
+    let panda = panda_pixelated.flat();
+    panda.forEach((pixel)=>{
+        let box =document.querySelector(`#box${pixel}`);
+        box.classList.add("cursor");
+    })
+}
+drawPanda();
 function popup(){
     let container = document.querySelector(".container");
     container.remove();
@@ -64,10 +66,9 @@ function popup(){
 
     let pixel_size=window.prompt("Enter the Pixel Size");
     SQUARES_DIM = pixel_size;
-    createGrid();
-    
+    createGrid();    
+    if(SQUARES_DIM==16) drawPanda();
 
-    // createGrid();
 }
 
 function getFunky(){
@@ -78,5 +79,13 @@ function getFunky(){
     let body = document.querySelector("body");
     body.insertBefore(new_container,body.firstChild);
     createGrid(true);
+    if(SQUARES_DIM==16) drawPanda();
 }
+function eraseCanvas(){
+    let container = document.querySelectorAll(".box");
+    container.forEach((box)=>{
+        box.classList.remove("cursor");
+        box.style.opacity = 0;
+    });
 
+}

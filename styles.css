@@ -45,10 +45,11 @@ p.pixelsize2{
 
 }
 .box{
+    background-color: black;
     margin: 0px;
     opacity: 0;
 }
 .cursor{
     opacity: 1 !important;
-    background-color: black;
+    /* background-color: black; */
 }
