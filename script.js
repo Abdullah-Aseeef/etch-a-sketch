@@ -1,3 +1,26 @@
+
+let panda_pixelated = [
+    [6,7,8,9,14,15],
+    [6,7,8,9,13,14,15],
+    [2,6,15],
+    [1,5],
+    [0,4,5],
+    [0,4,8,9],
+    [0,4,7,8,9,12,13],
+    [0,4,7,8,12,13],
+    [0,1,4,5,13],
+    [0,1,4,5,6,9,10,11],
+    [1,2,4,5,6,7,10,14,15],
+    [1,2,3,4,5,6,7,8,12,13,14,15],
+    [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+    [2,3,4,6,7,8,9,13,14,15],
+    [3,4,6,7,8,9,12,13,14,15],
+    [7,8,9,10,12,13,14]
+]
+for(let i =0; i < 16;i++){
+    panda_pixelated[i]=panda_pixelated[i].map((num)=>num+16*i);
+}
+
 let SQUARES_DIM = 16;
 function createGrid(funky = false){
     let container = document.querySelector(".container");
@@ -25,6 +48,12 @@ function createGrid(funky = false){
     });
 }
 createGrid()
+let panda = panda_pixelated.flat();
+panda.forEach((pixel)=>{
+    let box =document.querySelector(`#box${pixel}`);
+    box.classList.add("cursor");
+
+})
 function popup(){
     let container = document.querySelector(".container");
     container.remove();
@@ -50,3 +79,4 @@ function getFunky(){
     body.insertBefore(new_container,body.firstChild);
     createGrid(true);
 }
+

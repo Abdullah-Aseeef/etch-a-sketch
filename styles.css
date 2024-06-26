@@ -4,8 +4,12 @@ body{
     padding: 5vh;
     align-items: center;
     margin: 0;
+    /* background-color: rgb(136, 141, 167); */
+    background-color: rgb(28, 48, 65);
 }
 .container{
+    background-color: rgb(255,255,255,0.8);
+
     margin-top:auto;
     margin-bottom:auto;
     /* position: fixed; */
@@ -19,6 +23,7 @@ body{
 }
 .display{
     max-width: 40%;
+    color: white;
 }
 .display h1{
     font-size: 9vh;
@@ -45,4 +50,5 @@ p.pixelsize2{
 }
 .cursor{
     opacity: 1 !important;
+    background-color: black;
 }
