@@ -39,3 +39,6 @@ p.pixelsize2{
     font-size: large;
 
 }
+.box{
+    opacity: 0;
+}

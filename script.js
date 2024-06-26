@@ -1,4 +1,4 @@
-let SQUARES_DIM = 32;
+let SQUARES_DIM = 16;
 function createGrid(){
     let container = document.querySelector(".container");
     for(let i =0; i <SQUARES_DIM**2;i++){
@@ -10,13 +10,12 @@ function createGrid(){
         container.appendChild(div);
     }
     container.addEventListener('mouseover',(event)=>{
-        console.log(event.target.id)
         let box = document.getElementById(event.target.id);
         box.style.backgroundColor="black";
     });
     container.addEventListener('mouseout',(event)=>{
         let box = document.getElementById(event.target.id);
-        box.style.backgroundColor="gray";
+        box.style.opacity = `${parseFloat(window.getComputedStyle(box).opacity)+0.1}`;
     });
 }
 createGrid()
